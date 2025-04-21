@@ -1,0 +1,88 @@
+---
+title: "Data Dictionary"
+description: "Explanation of Data Status or Type Dictionary"
+---
+
+### Card Used Scenes Type
+
+| status | Description                                                                                        |
+|:------:|----------------------------------------------------------------------------------------------------|
+|   100  | Supports ad account funding & payments for cross-border platforms (Facebook, Google, TikTok, etc.) |
+|   101  | Cross-border e-commerce payments, flight bookings, hotel reservations, and more                    |
+|   102  | Membership renewals, API services, cloud platforms, and automated billing                          |
+|   103  | Apple Pay Dedicated Cards                                                                          |
+|   40   | Completed                                                                                          |
+|   99   | Cancelled                                                                                          |
+
+### Card Order Status
+
+| status | Description                 |
+|:------:|-----------------------------|
+|   00   | Pending Payment             |
+|   10   | Card Production in Progress |
+|   20   | Card Issuance Ongoing       |
+|   30   | Pending Confirmation        |
+|   40   | Completed                   |
+|   99   | Cancelled                   |
+
+### Card Status
+
+| status | Description |
+|:------:|-------------|
+|    0   | Active      |
+|    1   | Frozen      |
+|    2   | Closed      |
+|    3   | Closing     |
+|    4   | Blocked     |
+
+### Card Recharge Order Status
+
+| status | Description        |
+|:------:|--------------------|
+|    0   | Pending            |
+|    1   | Processing         |
+|    2   | Request Successful |
+|    3   | Failed             |
+|    4   | Cancelled          |
+
+### Card Transaction Type
+
+|    txnType   | Description               |
+| ------------ |---------------------------|
+| AUTH         | Transaction Authorization |
+| CREATE_CARD  | Card Activation           |
+| REVERSAL     | Authorization Reversal    |
+| TOPUP        | Top-up                    |
+| CARD_CANCEL  | Card Closure              |
+| CLEARING     | Transaction Settlement    |
+| RETURN       | Refund                    |
+| REFUND       | Refund                    |
+| SETTLED      | Transaction Settlement    |
+| CARD_DESTROY | Card Closure              |
+| AUTHG        | Transaction Fee           |
+| RETURNC      | FX Difference Refund      |
+| AUTHC        | FX Difference Adjustment  |
+| AUTHD        | Declined Transaction Fee  |
+| AUTHE        | Micro-transaction Fee     |
+| AUTHF        | Cross-border/FX Fee       |
+
+### Wallet Transaction Record BizType
+
+| bizType                         | Description               |
+|---------------------------------|---------------------------|
+| product_wallet_recharge_payment | Wallet Top-up             |
+| card_account_order              | Card Application          |
+| card_order_refund               | Card Cancellation Refund  |
+| card_recharge_payment           | Card Top-up               |
+| card_recharge_fail_refund       | Failed Card Top-up Refund |
+| card_cancel_refund              | Card Closure              |
+| card_seized                     | Card Blocking             |
+
+### Wallet Recharge Record Status
+| status | Description             |
+|:------:|-------------------------|
+| 00     | Pending Payment         |
+| 10     | Top-up Processing       |
+| 11     | Payment Review Rejected |
+| 20     | Top-up Completed        |
+| 21     | Cancelled               |
