@@ -1,0 +1,70 @@
+---
+title: 'Authentication'
+description: 'Below is an explanation of the authenticated signature rules.'
+---
+
+## Prepare
+
+Please contact your account manager to obtain an OpenAPI secret key.
+
+
+## Authentication
+
+All API endpoints are authenticated using Bearer tokens and retrieve it from the HTTP Header.
+
+```json
+{"Authorization": "Bearer <token>"}
+```
+
+## Construct the signature string
+
+We hope that the merchant's technical developers will construct the signature string according to the rules agreed upon in the current documentation. The platform will construct the signature string in the same way. If the merchant constructs the signature string incorrectly, it will result in signature verification failure. Below is the explanation of the specific format of the signature string. The signature JSON string has two attributes:
+
+```json
+{
+    "secret": "Your OpenAPI secret key.",
+    "timestamp": "Timestamp, the number of milliseconds since 1970."
+}
+```
+
+Please obtain the current system timestamp when initiating the request, which is the total number of seconds elapsed since 00:00:00 on January 1, 1970, Greenwich Mean Time (08:00:00 Beijing Time on January 1, 1970) to the present, as the request timestamp. The platform will refuse to process requests made a long time ago, so merchants should ensure their system time is accurate.
+
+## Calculate the signature value.
+
+After obtaining the signature JSON string, convert it to byte data, then use Base64 encoding to get the signature value.
+
+## Here is an example of Java code to generate a signature
+
+``` java
+import com.alibaba.fastjson2.JSONObject;
+import org.junit.Test;
+import org.springframework.util.Base64Utils;
+
+public class OpenApiTest {
+
+    @Test
+    public void getSign() {
+        // Construct the signature JSON format content
+        JSONObject signContent = new JSONObject();
+        signContent.put("secret", "your_secret_key"); // Your authorization key
+        signContent.put("timestamp", System.currentTimeMillis()); // Timestamp, the number of milliseconds since 1970
+
+        /*
+         * String to be encrypted for signature
+         * {
+         *  "secret":"your_secret_key",
+         *  "timestamp":1731664580356
+         * }
+         */
+        String signStr = signContent.toString();
+        // Base64 encode to obtain the signature
+        // The signature is valid for 5 minutes.
+        String sign = Base64Utils.encodeToString(signStr.getBytes());
+        System.out.println(sign);
+    }
+}
+
+```
+
+Please replace "your_secret_key" and the message variable with your actual secret key and the JSON string. This example uses Base64 encoding for generating the signature. Ensure that the secret key and algorithm match those required by your API documentation.
+<Warning>Please note that the signature is only valid for 5 minutes.</Warning>
