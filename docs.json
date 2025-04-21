@@ -13,7 +13,7 @@
       {
         "tab": "Documentation",
         "pages": [
-          "api-reference/introduction",
+          "authentication",
           "bill-push",
           "data-dict"
         ]
