@@ -1,0 +1,36 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Zephyr Card",
+  "colors": {
+    "primary": "#16A34A",
+    "light": "#07C983",
+    "dark": "#15803D"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "pages": [
+          "api-reference/introduction",
+          "bill-push",
+          "data-dict"
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "openapi": "https://dev-sandbox-v423.zephyrcards.com/v3/api-docs"
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.png",
+    "dark": "/logo/dark.png"
+  },
+  "navbar": {
+  },
+  "footer": {
+    "socials": {}
+  }
+}
